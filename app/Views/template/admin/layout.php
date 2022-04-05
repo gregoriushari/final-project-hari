@@ -133,17 +133,22 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <?= $this->renderSection('content') ?>
-          </div>
-        </div>
-      </div>
+            <h1 class="m-0"><?= $title ?></h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-  </div>
   <!-- /.content-wrapper -->
+
+  <section class="content">
+    <?= $this->renderSection('content') ?>   
+  </section>
+  </div>
   <footer class="main-footer">
     <strong>Copyright &copy; 2022 SPK LAPTOP.</strong>
     All rights reserved.
