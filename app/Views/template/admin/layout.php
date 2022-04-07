@@ -25,7 +25,6 @@
   <link rel="stylesheet" href="<?= base_url('assets/plugins/daterangepicker/daterangepicker.css') ?>">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url('assets/plugins/summernote/summernote-bs4.min.css') ?>">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -58,7 +57,7 @@
           <img src="<?= base_url('assets/dist/img/user2-160x160.jpg')?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="<?= base_url('admin')?>" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 
@@ -66,13 +65,13 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="<?= base_url()?>" class="nav-link">
+            <a href="<?= base_url('admin')?>" class="nav-link ">
               <i class="nav-icon fa-solid fa-house"></i>
               <p>Home</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('admin/laptop')?>" class="nav-link">
               <i class="nav-icon fa-solid fa-laptop"></i>
               <p>Laptop List</p>
             </a>
@@ -87,31 +86,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('admin/kriteria/harga')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Harga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('admin/kriteria/processor')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Processor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('admin/kriteria/memori')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kapasitas Memori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('admin/kriteria/ram')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>RAM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('admin/kriteria/gpu')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>GPU</p>
                 </a>
@@ -119,11 +118,17 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('admin/user')?>" class="nav-link">
+              <i class="nav-icon fa-solid fa-users"></i>
+              <p>Admin List</p>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="<?= base_url('history')?>" class="nav-link">
               <i class="nav-icon fa-solid fa-clock-rotate-left"></i>
               <p>History</p>
             </a>
-        </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -192,6 +197,14 @@
 s
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?= base_url('assets/dist/js/pages/dashboard.js') ?>"></script>
+<script>
+  $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 </body>
 </html>

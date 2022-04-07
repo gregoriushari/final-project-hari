@@ -31,7 +31,39 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->group('/', function ($routes) {
+  $routes->get('', 'Home::index');
+  $routes->post('login', 'Auth::login');
+});
+
+$routes->group('admin', function ($routes) {
+  $routes->get('', 'Admin/AdminHome::index');
+
+  $routes->group('user', function ($routes) {
+    $routes->get('', 'Admin/UserList::index');
+  });
+  $routes->group('kriteria', function ($routes) {
+    $routes->group('harga', function ($routes) {
+      $routes->get('', 'Admin/Kriteria/KriteriaHargaList::index');
+    }); 
+    $routes->group('ram', function ($routes) {
+      $routes->get('', 'Admin/Kriteria/KriteriaRamList::index');
+    }); 
+    $routes->group('gpu', function ($routes) {
+      $routes->get('', 'Admin/Kriteria/KriteriaGpuList::index');
+    }); 
+    $routes->group('memori', function ($routes) {
+      $routes->get('', 'Admin/Kriteria/KriteriaMemoriList::index');
+    }); 
+    $routes->group('processor', function ($routes) {
+      $routes->get('', 'Admin/Kriteria/KriteriaProcessorList::index');
+    }); 
+  });
+
+  $routes->group('laptop', function ($routes) {
+    $routes->get('', 'Admin/LaptopList::index');
+  });
+});
 
 /*
  * --------------------------------------------------------------------
