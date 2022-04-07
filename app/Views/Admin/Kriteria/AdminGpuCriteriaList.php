@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
-  <a href="<?= base_url('admin/kriteria/gpu') ?>" class="btn btn-primary mb-3 ">Add GPU List</a> 
+  <a href="<?= base_url('admin/kriteria/gpu') ?>" class="btn btn-primary mb-3 ">Add GPU</a> 
 </div>
 <div>
   <table id="table_id" class="display">

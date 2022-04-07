@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
-  <a href="<?= base_url('admin/kriteria/harga') ?>" class="btn btn-primary mb-3 ">Add Price List</a> 
+  <a href="<?= base_url('admin/kriteria/harga') ?>" class="btn btn-primary mb-3 ">Add Price</a> 
 </div>
 <div>
   <table id="table_id" class="display">
