@@ -13,7 +13,7 @@ class KriteriaRamList extends BaseController{
   public function index(){
     $data['title'] = 'RAM Criteria List';
     $data['ram'] = $this->ramModel->getData('data');
-    return view('Admin/Kriteria/RAM/AdminRamCriteriaList', $data);
+    return view('Admin/Kriteria/AdminRamCriteriaList', $data);
   }
 
 

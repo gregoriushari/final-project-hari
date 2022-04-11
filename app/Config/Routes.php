@@ -55,6 +55,9 @@ $routes->group('admin', function ($routes) {
   }); 
 
   $routes->group('gpu', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin\Kriteria\KriteriaGpuList::editData/$1');
+    $routes->post('add', 'Admin\Kriteria\KriteriaGpuList::addData');
+    $routes->get('delete/(:any)', 'Admin\Kriteria\KriteriaGpuList::deleteData/$1');
     $routes->get('', 'Admin/Kriteria/KriteriaGpuList::index');
   }); 
 
