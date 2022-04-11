@@ -43,9 +43,6 @@ class MemoriModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
-      case 'detailData':
-        $result = $this->where('member_id', $data['id'])->first();
-        break;
     }
     return $result;
   }
@@ -55,7 +52,7 @@ class MemoriModel extends BaseModel
     switch ($flag) {
       case 'insertData':
         return $this->insert([
-          'memori_kriteria_id'=> uniqid('R'),
+          'memori_kriteria_id'=> uniqid('M'),
           'memori_kriteria_name'=>$data['name'],
           'memori_kriteria_bobot'=>$data['bobot'],
         ]);

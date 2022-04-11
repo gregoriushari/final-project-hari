@@ -43,9 +43,6 @@ class ProcessorModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
-      case 'detailData':
-        $result = $this->where('member_id', $data['id'])->first();
-        break;
     }
     return $result;
   }
@@ -55,7 +52,7 @@ class ProcessorModel extends BaseModel
     switch ($flag) {
       case 'insertData':
         return $this->insert([
-          'processor_kriteria_id'=> uniqid('R'),
+          'processor_kriteria_id'=> uniqid('P'),
           'processor_kriteria_name'=>$data['name'],
           'processor_kriteria_bobot'=>$data['bobot'],
         ]);

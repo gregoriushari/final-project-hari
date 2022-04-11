@@ -43,9 +43,6 @@ class HargaModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
-      case 'detailData':
-        $result = $this->where('member_id', $data['id'])->first();
-        break;
     }
     return $result;
   }
@@ -55,7 +52,7 @@ class HargaModel extends BaseModel
     switch ($flag) {
       case 'insertData':
         return $this->insert([
-          'harga_kriteria_id'=> uniqid('R'),
+          'harga_kriteria_id'=> uniqid('H'),
           'harga_kriteria_name'=>$data['name'],
           'harga_kriteria_bobot'=>$data['bobot'],
         ]);

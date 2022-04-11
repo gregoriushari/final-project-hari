@@ -40,6 +40,9 @@ $routes->group('admin', function ($routes) {
   $routes->get('', 'Admin\AdminHome::index');
 
   $routes->group('user', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin\UserList::editData/$1');
+    $routes->post('add', 'Admin\UserList::addData');
+    $routes->get('delete/(:any)', 'Admin\UserList::deleteData/$1');
     $routes->get('', 'Admin\UserList::index');
   });
 

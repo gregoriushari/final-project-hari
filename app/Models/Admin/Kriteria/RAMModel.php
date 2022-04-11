@@ -43,9 +43,6 @@ class RAMModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
-      case 'detailData':
-        $result = $this->where('member_id', $data['id'])->first();
-        break;
     }
     return $result;
   }

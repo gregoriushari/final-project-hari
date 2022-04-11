@@ -43,9 +43,6 @@ class GPUModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
-      case 'detailData':
-        $result = $this->where('member_id', $data['id'])->first();
-        break;
     }
     return $result;
   }
@@ -55,7 +52,7 @@ class GPUModel extends BaseModel
     switch ($flag) {
       case 'insertData':
         return $this->insert([
-          'gpu_kriteria_id'=> uniqid('R'),
+          'gpu_kriteria_id'=> uniqid('G'),
           'gpu_kriteria_name'=>$data['name'],
           'gpu_kriteria_bobot'=>$data['bobot'],
         ]);
