@@ -54,6 +54,9 @@ class AdminModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
+      case 'countData':
+        $result = $this->countAllResults();
+        break;
     }
     return $result;
   }
