@@ -44,6 +44,9 @@ $routes->group('admin', function ($routes) {
   });
 
   $routes->group('harga', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin\Kriteria\KriteriaHargaList::editData/$1');
+    $routes->post('add', 'Admin\Kriteria\KriteriaHargaList::addData');
+    $routes->get('delete/(:any)', 'Admin\Kriteria\KriteriaHargaList::deleteData/$1');
     $routes->get('', 'Admin\Kriteria\KriteriaHargaList::index');
   }); 
 
@@ -65,7 +68,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('', 'Admin/Kriteria/KriteriaMemoriList::index');
   }); 
 
- $routes->group('processor', function ($routes) {
+  $routes->group('processor', function ($routes) {
     $routes->get('', 'Admin/Kriteria/KriteriaProcessorList::index');
   }); 
 
