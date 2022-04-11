@@ -1,6 +1,15 @@
 <?= $this->extend('template/admin/layout') ?>
 
 <?= $this->section('content') ?>
+<?php if(session()->getFlashData('success')){?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <?= session()->getFlashData('success') ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
+
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRamModal">Add RAM</a> 
 </div>
@@ -25,7 +34,7 @@
             <td><?= $rams['updated_at']; ?></td>
             <td>
                 <a href="" data-toggle="modal" data-target="#editRAM<?= $rams['ram_kriteria_id'] ?>" class="badge badge-success"><i class="far fa-fw fa-edit"></i></a>
-                <a href="<?= base_url('admin/kriteria/ram/deleteData/' . $rams['ram_kriteria_id']) ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete  ?')"><i class="far fa-fw fa-trash-alt"></i></a>
+                <a href="<?= base_url('admin/ram/delete/' . $rams['ram_kriteria_id']) ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete  ?')"><i class="far fa-fw fa-trash-alt"></i></a>
             </td>
           </tr>
           <?php $i++; ?>
@@ -43,7 +52,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/kriteria/ram/add'); ?>" method="post">
+            <form action="<?= base_url('admin/ram/add'); ?>" method="post">
+            <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Ram Capacity">
@@ -60,6 +70,7 @@
         </div>
     </div>
 </div>
+
 <?php foreach ($ram as $rams) : ?>
     <div class="modal fade" id="editRAM<?= $rams['ram_kriteria_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editRAM<?= $rams['ram_kriteria_id'] ?>Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -70,13 +81,14 @@
                         <span aria-hidden="true">&times;</span>
                     </buttond>
                 </div>
-                <form action="<?= base_url('admin/kriteria/ram/edit/' . $rams['ram_kriteria_id']); ?>" method="post">
+                <form action="<?= base_url('admin/ram/edit/'.$rams['ram_kriteria_id']); ?>"  method="post">
+                    <?= csrf_field(); ?>
                     <div class="modal-body">
                         <div class="form-group">
                             <input type="text" class="form-control" value="<?= $rams['ram_kriteria_name'] ?>" id="name" name="name" placeholder="Ram Capacity">
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" value="<?= $rams['ram_kriteria_bobot'] ?>" id="price" name="price" placeholder="Bobot">
+                            <input type="number" class="form-control" value="<?= $rams['ram_kriteria_bobot'] ?>" id="bobot" name="bobot" placeholder="Bobot">
                         </div>
                     </div>
                     <div class="modal-footer">

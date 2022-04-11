@@ -86,31 +86,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url('admin/kriteria/harga')?>" class="nav-link">
+                <a href="<?= base_url('admin/harga')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Harga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/kriteria/processor')?>" class="nav-link">
+                <a href="<?= base_url('admin/processor')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Processor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/kriteria/memori')?>" class="nav-link">
+                <a href="<?= base_url('admin/memori')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kapasitas Memori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/kriteria/ram')?>" class="nav-link">
+                <a href="<?= base_url('admin/ram')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>RAM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/kriteria/gpu')?>" class="nav-link">
+                <a href="<?= base_url('admin/gpu')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>GPU</p>
                 </a>

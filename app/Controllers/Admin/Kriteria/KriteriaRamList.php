@@ -13,7 +13,7 @@ class KriteriaRamList extends BaseController{
   public function index(){
     $data['title'] = 'RAM Criteria List';
     $data['ram'] = $this->ramModel->getData('data');
-    return view('admin/kriteria/RAM/AdminRamCriteriaList', $data);
+    return view('Admin/Kriteria/RAM/AdminRamCriteriaList', $data);
   }
 
 
@@ -29,33 +29,26 @@ class KriteriaRamList extends BaseController{
         'name'=>$this->request->getPost('name'),
         'bobot'=>$this->request->getPost('bobot'),
       ];
+      
       $this->ramModel->insertData('insertData',$data);
-      return redirect()->to('admin/kriteria/ram');
+      return redirect()->to('admin/ram')->with('success','Data berhasil ditambahkan');
     }
   }
 
   public function editData($id){
-    $validation =  \Config\Services::validation();
-    $validation->setRules([
-        'name' => 'required',
-        'bobot' => 'required'
-    ]);
-    $isDataValid = $validation->withRequest($this->request)->run();
-    if($isDataValid){
-      $data = [
-        'name'=>$this->request->getPost('name'),
-        'bobot'=>$this->request->getPost('bobot'),
-        'id'=>$id
-      ];
-      $this->ramModel->updateData('updateData',$data);
-      return redirect()->to('admin/kriteria/ram');
-    }
+    $data = [
+      'name'=>$this->request->getPost('name'),
+      'bobot'=>$this->request->getPost('bobot'),
+      'id'=>$id
+    ];
+    $this->ramModel->updateData('updateData',$data);
+    return redirect()->to('admin/ram')->with('success','Data berhasil diubah');
   }
 
   public function deleteData($id){
     $data['id'] = $id;
     $this->ramModel->deleteData('deleteData',$data);
-    return redirect()->to('admin/kriteria/ram');
+    return redirect()->to('admin/ram')->with('success','Data berhasil dihapus');
   }
 }
 
