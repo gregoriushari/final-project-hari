@@ -65,6 +65,9 @@ $routes->group('admin', function ($routes) {
   }); 
 
   $routes->group('memori', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin\Kriteria\KriteriaMemoriList::editData/$1');
+    $routes->post('add', 'Admin\Kriteria\KriteriaMemoriList::addData');
+    $routes->get('delete/(:any)', 'Admin\Kriteria\KriteriaMemoriList::deleteData/$1');
     $routes->get('', 'Admin/Kriteria/KriteriaMemoriList::index');
   }); 
 
