@@ -65,7 +65,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="<?= base_url('admin')?>" class="nav-link ">
+            <a href="<?= base_url('admin')?>" class="nav-link active ">
               <i class="nav-icon fa-solid fa-house"></i>
               <p>Home</p>
             </a>

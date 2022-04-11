@@ -8,6 +8,6 @@ class KriteriaGpuList extends BaseController
 {
   public function index(){
     $data['title'] = 'GPU Criteria List';
-    return view('admin/kriteria/admingpucriterialist', $data);
+    return view('admin/kriteria/gpu/admingpucriterialist', $data);
   }
 }

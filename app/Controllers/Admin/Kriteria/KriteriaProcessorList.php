@@ -8,6 +8,6 @@ class KriteriaProcessorList extends BaseController
 {
   public function index(){
     $data['title'] = 'Processor Criteria List';
-    return view('admin/kriteria/adminprocessorcriterialist', $data);
+    return view('admin/kriteria/processor/adminprocessorcriterialist', $data);
   }
 }

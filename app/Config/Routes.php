@@ -42,19 +42,28 @@ $routes->group('admin', function ($routes) {
   $routes->group('user', function ($routes) {
     $routes->get('', 'Admin/UserList::index');
   });
+
   $routes->group('kriteria', function ($routes) {
+
     $routes->group('harga', function ($routes) {
       $routes->get('', 'Admin/Kriteria/KriteriaHargaList::index');
     }); 
+
     $routes->group('ram', function ($routes) {
       $routes->get('', 'Admin/Kriteria/KriteriaRamList::index');
+      $routes->add('add', 'Admin/Kriteria/KriteriaRamList::addData');
+      $routes->post('edit/(:any)', 'Admin/Kriteria/KriteriaRamList::editData/$1');
+      // $routes->get('delete/(:alphanum)', 'Admin/Kriteria/KriteriaRamList::deleteData/$1');
     }); 
+
     $routes->group('gpu', function ($routes) {
       $routes->get('', 'Admin/Kriteria/KriteriaGpuList::index');
     }); 
+
     $routes->group('memori', function ($routes) {
       $routes->get('', 'Admin/Kriteria/KriteriaMemoriList::index');
     }); 
+
     $routes->group('processor', function ($routes) {
       $routes->get('', 'Admin/Kriteria/KriteriaProcessorList::index');
     }); 
