@@ -72,6 +72,9 @@ $routes->group('admin', function ($routes) {
   }); 
 
   $routes->group('processor', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin\Kriteria\KriteriaProcessorList::editData/$1');
+    $routes->post('add', 'Admin\Kriteria\KriteriaProcessorList::addData');
+    $routes->get('delete/(:any)', 'Admin\Kriteria\KriteriaProcessorList::deleteData/$1');
     $routes->get('', 'Admin/Kriteria/KriteriaProcessorList::index');
   }); 
 
