@@ -1,14 +1,14 @@
 <?= $this->extend('template/admin/layout') ?>
 
 <?= $this->section('content') ?>
-<?php if(session()->getFlashData('success')){?>
+<?php if(session()->getFlashData('success')):?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <?= session()->getFlashData('success') ?>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<?php } ?>
+<?php endif ; ?>
 
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newGPUModal">Add GPU</a> 
