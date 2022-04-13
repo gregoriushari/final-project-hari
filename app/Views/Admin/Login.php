@@ -38,12 +38,15 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" id="Mypassword" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+        </div>
+        <div>
+          <input type="checkbox" onclick="myFunction()">Show Password
         </div>
         <div class="row justify-content-between">
           <!-- /.col -->
@@ -61,7 +64,16 @@
   </div>
 </div>
 <!-- /.login-box -->
-
+<script>
+  function myFunction() {
+  var x = document.getElementById("Mypassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 <!-- jQuery -->
 <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 <!-- Bootstrap 4 -->
