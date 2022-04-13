@@ -27,7 +27,6 @@
                 <?php echo session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
-      <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="<?= base_url('login/process');?>" method="post">
         <div class="input-group mb-3">
