@@ -18,7 +18,7 @@
       <thead>
           <tr>
               <th>No</th>
-              <th>List GPU</th>
+              <th>List Harga</th>
               <th>Bobot</th>
               <th>Last Update</th>
               <th>Action</th>

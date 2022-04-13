@@ -27,7 +27,6 @@
                 <?php echo session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
-      <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="<?= base_url('login/process');?>" method="post">
         <div class="input-group mb-3">
@@ -46,10 +45,13 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-between">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-success btn-block">Sign In</button>
+          </div>
+          <div class="col-4">
+            <a class="btn btn-danger btn-block" href="<?= base_url('');?>" role="button">Back</a>
           </div>
           <!-- /.col -->
         </div>
