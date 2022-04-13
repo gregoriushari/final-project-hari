@@ -9,6 +9,15 @@
     </button>
 </div>
 <?php } ?>
+<?php if(session()->getFlashData('error')){?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashData('error') ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
+
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3"  data-toggle="modal" data-target="#newUserModal">Add User</a>
 </div>
@@ -60,7 +69,9 @@
                         <input type="text" class="form-control" name="email" id="email" placeholder="Admin Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Admin Password">
+                        <input type="password" class="form-control" name="password" id="Mypassword" placeholder="Admin Password">
+                        <!-- An element to toggle between password visibility -->
+                        <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -91,7 +102,9 @@
                             <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="email" name="email" placeholder="Admin Email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="password" name="password" placeholder="Password">
+                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="Mypassword" name="password" placeholder="Password">
+                            <!-- An element to toggle between password visibility -->
+                            <input type="checkbox" onclick="myFunction()">Show Password
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -103,6 +116,17 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+<script>
+  function myFunction() {
+  var x = document.getElementById("Mypassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 
 <?= $this->endSection() ?>
 

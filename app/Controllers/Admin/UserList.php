@@ -20,7 +20,7 @@ class UserList extends BaseController{
     $validation =  \Config\Services::validation();
     $validation->setRules([
         'name' => 'required',
-        'email' => 'required|valid_email',
+        'email' => 'required|valid_email|is_unique[admin_ms.admin_email]|',
         'password' => 'required'
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
@@ -33,6 +33,9 @@ class UserList extends BaseController{
       ];
       $this->adminModel->insertData('insertData',$data);
       return redirect()->to('admin/user')->with('success','Data berhasil ditambahkan');
+    }else{
+      $data['validation'] = $this->validator;
+      return redirect()->to('admin/user')->with('error','Email Sudah Terdaftar');
     }
   }
 

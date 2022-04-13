@@ -82,6 +82,9 @@ $routes->group('admin', function ($routes) {
   }); 
 
   $routes->group('laptop', function ($routes) {
+    $routes->post('edit/(:any)', 'Admin/LaptopList::editData/$1');
+    $routes->post('add', 'Admin/LaptopList::addData');
+    $routes->get('delete/(:any)', 'Admin/LaptopList::deleteData/$1');
     $routes->get('', 'Admin/LaptopList::index');
   });
 });
