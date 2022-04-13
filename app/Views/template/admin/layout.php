@@ -56,19 +56,25 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="<?= base_url('admin')?>" class="nav-link active ">
+          <?php $request = $request = \Config\Services::request();
+              $uri = $request->uri->getSegment(2);
+              ?>
+            <a href="<?= base_url('admin')?>" class="nav-link <?= ($uri == '') ? 'active' : '' ?>">
               <i class="nav-icon fa-solid fa-house"></i>
               <p>Home</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="<?= base_url('admin/laptop')?>" class="nav-link">
+          <?php $l='laptop';
+          $uri_l = $request->uri->getSegment(2);
+          ?>
+            <a href="<?= base_url('admin/laptop')?>" class="nav-link <?= ($uri_l == $l) ? 'active' : '' ?>">
               <i class="nav-icon fa-solid fa-laptop"></i>
               <p>Laptop List</p>
             </a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        <li class="nav-item <?= ($uri_l == 'ram' || $uri_l == 'processor' || $uri_l == 'harga' || $uri_l == 'memori'|| $uri_l == 'gpu') ? 'menu-open' : '' ?>">
+          <a href="#" class="nav-link <?= ($uri_l == 'ram' || $uri_l == 'processor' || $uri_l == 'harga' || $uri_l == 'memori'|| $uri_l == 'gpu') ? 'active' : '' ?> ">
             <i class="nav-icon fa-solid fa-list-check"></i>
               <p>
                 Kriteria List
@@ -77,31 +83,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url('admin/harga')?>" class="nav-link">
+                <a href="<?= base_url('admin/harga')?>" class="nav-link <?= ($uri_l == 'harga') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Harga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/processor')?>" class="nav-link">
+                <a href="<?= base_url('admin/processor')?>" class="nav-link <?= ($uri_l == 'processor') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Processor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/memori')?>" class="nav-link">
+                <a href="<?= base_url('admin/memori')?>" class="nav-link <?= ($uri_l == 'memori') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kapasitas Memori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/ram')?>" class="nav-link">
+                <a href="<?= base_url('admin/ram')?>" class="nav-link <?= ($uri_l == 'ram') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>RAM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/gpu')?>" class="nav-link">
+                <a href="<?= base_url('admin/gpu')?>" class="nav-link <?= ($uri_l == 'gpu') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>GPU</p>
                 </a>
@@ -109,7 +115,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/user')?>" class="nav-link">
+            <?php $u='user';
+            $uri_l = $request->uri->getSegment(2);
+            ?>
+            <a href="<?= base_url('admin/user')?>" class="nav-link  <?= ($uri_l == $u) ? 'active' : '' ?>">
               <i class="nav-icon fa-solid fa-users"></i>
               <p>Admin List</p>
             </a>
@@ -120,12 +129,7 @@
               <p>Log Out</p>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="<?= base_url('history')?>" class="nav-link">
-              <i class="nav-icon fa-solid fa-clock-rotate-left"></i>
-              <p>History</p>
-            </a>
-          </li> -->
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
