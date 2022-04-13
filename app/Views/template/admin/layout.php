@@ -114,6 +114,12 @@
               <p>Admin List</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= base_url('logout')?>" class="nav-link">
+              <i class="nav-icon fa-solid fa-door-open"></i>
+              <p>Log Out</p>
+            </a>
+          </li>
           <!-- <li class="nav-item">
             <a href="<?= base_url('history')?>" class="nav-link">
               <i class="nav-icon fa-solid fa-clock-rotate-left"></i>

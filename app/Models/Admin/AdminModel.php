@@ -48,11 +48,14 @@ class AdminModel extends BaseModel
     'password'=>'admin_password',
   ];
 
-  function getData($flag=''){
+  function getData($flag='', $data=''){
     $result = [];
     switch ($flag) {
       case 'data':
         $result = $this->findAll();
+        break;
+      case 'detailUsernameData':
+        $result = $this->where('admin_email', $data['email'])->first();
         break;
       case 'countData':
         $result = $this->countAllResults();
