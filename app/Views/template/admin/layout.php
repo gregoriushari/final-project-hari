@@ -120,7 +120,7 @@
             ?>
             <a href="<?= base_url('admin/user')?>" class="nav-link  <?= ($uri_l == $u) ? 'active' : '' ?>">
               <i class="nav-icon fa-solid fa-users"></i>
-              <p>Admin List</p>
+              <p>User List</p>
             </a>
           </li>
           <li class="nav-item">
