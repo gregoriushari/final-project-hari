@@ -115,7 +115,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('logout')?>" class="nav-link">
+            <a href="<?= base_url('logout')?>" onclick="return confirm('Are you sure want to Log Out  ?')"class="nav-link">
               <i class="nav-icon fa-solid fa-door-open"></i>
               <p>Log Out</p>
             </a>
