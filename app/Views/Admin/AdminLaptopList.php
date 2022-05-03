@@ -9,6 +9,14 @@
     </button>
 </div>
 <?php } ?>
+<?php if(session()->getFlashData('failed')){?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashData('failed') ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
 
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newLaptopModal">Add Laptop</a> 
@@ -19,6 +27,7 @@
           <tr>
               <th>No</th>
               <th>Laptop Name</th>
+              <th>Laptop Image</th>
               <th>Last Update</th>
               <th>Action</th>
           </tr>
@@ -29,6 +38,7 @@
           <tr>
             <th scope="row"><?= $i; ?></th>
             <td><?= $laptops['laptop_name']; ?></td>
+            <td><img src="<?= base_url('img').'/'. $laptops['laptop_image'];?>"  width="400" height="200"></td>
             <td><?= $laptops['updated_at']; ?></td>
             <td>
                 <a href="" data-toggle="modal" data-target="#editLaptop<?= $laptops['laptop_id'] ?>" class="badge badge-success"><i class="far fa-fw fa-edit"></i></a>
@@ -50,7 +60,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/laptop/add'); ?>" method="post">
+            <form action="<?= base_url('admin/laptop/add'); ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
@@ -99,7 +109,18 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                </div>
+                    <div class="form-group">
+                      <div class="col-sm-6">
+                        <img src="/img/default.jpg" class="img-thumbnail img-preview">
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="image" id="image" onchange="previewImg()">
+                          <label for="Image" class="custom-file-label">Pilih Gambar....</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Add</button>
@@ -108,24 +129,25 @@
         </div>
     </div>
 </div>
-<?php foreach ($laptop as $gpus) : ?>
-    <div class="modal fade" id="editLaptop<?= $gpus['laptop_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editLaptop<?= $gpus['laptop_id'] ?>Label" aria-hidden="true">
+<?php foreach ($laptop as $lpts) : ?>
+    <div class="modal fade" id="editLaptop<?= $lpts['laptop_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editLaptop<?= $lpts['laptop_id'] ?>Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editGPU<?= $gpus['laptop_id'] ?>Label">Edit Laptop List</h5>
+                    <h5 class="modal-title" id="editGPU<?= $lpts['laptop_id'] ?>Label">Edit Laptop List</h5>
                     <buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </buttond>
                 </div>
-                <form action="<?= base_url('admin/laptop/edit/'.$gpus['laptop_id']); ?>"  method="post">
+                <form action="<?= base_url('admin/laptop/edit/'.$lpts['laptop_id']); ?>"  method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
+                    <input type="hidden" name='imageLama' value="<?= $lpts['laptop_image'];?>">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $gpus['laptop_name'] ?>" id="name" name="name" placeholder="Laptop Name">
+                            <input type="text" class="form-control" value="<?= $lpts['laptop_name'] ?>" id="name" name="name" placeholder="Laptop Name">
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" value="<?= $gpus['laptop_price'] ?>" id="price" name="price" placeholder="Laptop Price">
+                            <input type="number" class="form-control" value="<?= $lpts['laptop_price'] ?>" id="price" name="price" placeholder="Laptop Price">
                         </div>
                         <div class="form-group">
                           <select name="harga" id="harga" class="form-control">
@@ -187,6 +209,17 @@
                                 <?php endforeach; ?>
                           </select>
                         </div>
+                        <div class="form-group">
+                          <div class="col-sm-6">
+                            <img src="/img/<?= $lpts['laptop_image'];?>" class="img-thumbnail img-preview1">
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="image" id="image1" onchange="editPreviewImg()">
+                              <label for="image" class="custom-file-label coba1"><?= $lpts['laptop_image'];?></label>
+                            </div>
+                          </div>
+                      </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

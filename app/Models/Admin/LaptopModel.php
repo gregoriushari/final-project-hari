@@ -8,7 +8,7 @@ class LaptopModel extends BaseModel
 {
   protected $table                = 'laptop_ms';
   protected $primaryKey           = 'laptop_id';
-  protected $useSoftDeletes       = true;
+  protected $useSoftDeletes       = false;
 
   protected $allowedFields        = [
     'laptop_id',
@@ -49,7 +49,7 @@ class LaptopModel extends BaseModel
     'image'=>'laptop_image',
   ];
 
-  function getData($flag=''){
+  function getData($flag='', $data=''){
     $result = [];
     switch ($flag) {
       case 'data':
@@ -57,6 +57,9 @@ class LaptopModel extends BaseModel
         break;
       case 'countData':
         $result = $this->countAllResults();
+        break;
+      case 'findById':
+        $result = $this->find($data['id']);
         break;
     }
     return $result;
@@ -70,7 +73,7 @@ class LaptopModel extends BaseModel
           'laptop_id'=> uniqid('L'),
           'laptop_name'=>$data['name'],
           'laptop_price'=>$data['price'],
-          'laptop_image'=>'cobaaa',
+          'laptop_image'=>$data['image'],
           'ram_id'=>$data['ram'],
           'gpu_id'=>$data['gpu'],
           'memori_id'=>$data['memori'],
@@ -87,7 +90,7 @@ class LaptopModel extends BaseModel
         $postData = [
           'laptop_name'=>$data['name'],
           'laptop_price'=>$data['price'],
-          'laptop_image'=>'cobaaa update',
+          'laptop_image'=>$data['image'],
           'ram_id'=>$data['ram'],
           'gpu_id'=>$data['gpu'],
           'memori_id'=>$data['memori'],

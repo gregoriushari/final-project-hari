@@ -203,7 +203,33 @@ s
     $('#table_id').DataTable();
 } );
 
+function previewImg(){
+  const image = document.getElementById('image')
+  const imageLabel = document.querySelector('.custom-file-label')
+  const imgPreview = document.querySelector('.img-preview')
 
+  console.log(image.files)
+  imageLabel.textContent = image.files[0].name
+  const fileImage = new FileReader()
+  fileImage.readAsDataURL(image.files[0])
+
+  fileImage.onload = function(e){
+    imgPreview.src = e.target.result
+  }
+}
+function editPreviewImg(){
+  const image = document.getElementById('image1')
+  const imageLabel = document.querySelector('.coba1')
+  const imgPreview = document.querySelector('.img-preview1')
+
+  imageLabel.textContent = image.files[0].name
+  const fileImage = new FileReader()
+  fileImage.readAsDataURL(image.files[0])
+
+  fileImage.onload = function(e){
+    imgPreview.src = e.target.result
+  }
+}
 </script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
