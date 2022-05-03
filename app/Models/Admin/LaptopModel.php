@@ -8,7 +8,7 @@ class LaptopModel extends BaseModel
 {
   protected $table                = 'laptop_ms';
   protected $primaryKey           = 'laptop_id';
-  protected $useSoftDeletes       = false;
+  protected $useSoftDeletes       = true;
 
   protected $allowedFields        = [
     'laptop_id',
