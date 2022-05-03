@@ -31,6 +31,8 @@ class KriteriaProcessorList extends BaseController
       
       $this->processorModel->insertData('insertData',$data);
       return redirect()->to('admin/processor')->with('success','Data berhasil ditambahkan');
+    }else{
+      return redirect()->to('admin/processor')->with('failed','Data tidak bisa ditambahkan');
     }
   }
 

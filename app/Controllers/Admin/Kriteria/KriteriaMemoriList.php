@@ -32,6 +32,8 @@ class KriteriaMemoriList extends BaseController
       
       $this->memoriModel->insertData('insertData',$data);
       return redirect()->to('admin/memori')->with('success','Data berhasil ditambahkan');
+    }else{
+      return redirect()->to('admin/memori')->with('failed','Data tidak bisa ditambahkan');
     }
   }
 

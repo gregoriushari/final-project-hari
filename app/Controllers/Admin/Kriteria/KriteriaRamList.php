@@ -32,6 +32,8 @@ class KriteriaRamList extends BaseController{
       
       $this->ramModel->insertData('insertData',$data);
       return redirect()->to('admin/ram')->with('success','Data berhasil ditambahkan');
+    }else{
+      return redirect()->to('admin/ram')->with('failed','Data tidak bisa ditambahkan');
     }
   }
 

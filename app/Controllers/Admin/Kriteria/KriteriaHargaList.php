@@ -32,6 +32,8 @@ class KriteriaHargaList extends BaseController
       
       $this->hargaModel->insertData('insertData',$data);
       return redirect()->to('admin/harga')->with('success','Data berhasil ditambahkan');
+    }else{
+      return redirect()->to('admin/harga')->with('failed','Data berhasil ditambahkan');
     }
   }
 

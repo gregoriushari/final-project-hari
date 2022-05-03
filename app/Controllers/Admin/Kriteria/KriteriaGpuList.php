@@ -29,9 +29,10 @@ class KriteriaGpuList extends BaseController
         'name'=>$this->request->getPost('name'),
         'bobot'=>$this->request->getPost('bobot'),
       ];
-      
       $this->gpuModel->insertData('insertData',$data);
       return redirect()->to('admin/gpu')->with('success','Data berhasil ditambahkan');
+    }else{
+      return redirect()->to('admin/gpu')->with('failed','Data tidak bisa ditambahkan');
     }
   }
 

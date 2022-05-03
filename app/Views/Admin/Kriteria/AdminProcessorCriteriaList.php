@@ -9,6 +9,15 @@
     </button>
 </div>
 <?php endif ; ?>
+<?php if(session()->getFlashData('failed')):?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashData('failed') ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif ; ?>
+
 
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newProcessorModal">Add Processor</a> 

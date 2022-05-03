@@ -35,7 +35,7 @@ class UserList extends BaseController{
       return redirect()->to('admin/user')->with('success','Data berhasil ditambahkan');
     }else{
       $data['validation'] = $this->validator;
-      return redirect()->to('admin/user')->with('error','Email Sudah Terdaftar');
+      return redirect()->to('admin/user')->with('error','Data tidak bisa ditambahkan');
     }
   }
 
