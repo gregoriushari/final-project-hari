@@ -210,15 +210,10 @@
                           </select>
                         </div>
                         <div class="form-group">
-                          <div class="col-sm-6">
-                            <img src="/img/<?= $lpts['laptop_image'];?>" class="img-thumbnail img-preview1">
-                          </div>
-                          <div class="col-sm-6">
                             <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="image" id="image1" onchange="editPreviewImg()">
-                              <label for="image" class="custom-file-label coba1"><?= $lpts['laptop_image'];?></label>
+                              <input type="file" class="custom-file-input" name="image" id="image">
+                              <label for="image" class="custom-file-label"><?= $lpts['laptop_image'];?></label>
                             </div>
-                          </div>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -230,5 +225,20 @@
         </div>
     </div>
 <?php endforeach; ?>
-
+    <script>
+      function editPreviewImg(){
+      const gambar = document.querySelector('#image1');
+      const imageLabel = document.querySelector('.coba1')
+      const imgPreview = document.querySelector('.img-preview1')
+    
+      console.log(gambar)
+      imageLabel.textContent = gambar.files[0].name
+      const fileImage = new FileReader()
+      fileImage.readAsDataURL(gambar.files[0])
+    
+      fileImage.onload = function(e){
+        imgPreview.src = e.target.result
+      }
+    }
+    </script>
 <?= $this->endSection() ?>

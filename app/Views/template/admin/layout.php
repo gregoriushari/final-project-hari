@@ -208,20 +208,7 @@ function previewImg(){
   const imageLabel = document.querySelector('.custom-file-label')
   const imgPreview = document.querySelector('.img-preview')
 
-  console.log(image.files)
-  imageLabel.textContent = image.files[0].name
-  const fileImage = new FileReader()
-  fileImage.readAsDataURL(image.files[0])
-
-  fileImage.onload = function(e){
-    imgPreview.src = e.target.result
-  }
-}
-function editPreviewImg(){
-  const image = document.getElementById('image1')
-  const imageLabel = document.querySelector('.coba1')
-  const imgPreview = document.querySelector('.img-preview1')
-
+  
   imageLabel.textContent = image.files[0].name
   const fileImage = new FileReader()
   fileImage.readAsDataURL(image.files[0])

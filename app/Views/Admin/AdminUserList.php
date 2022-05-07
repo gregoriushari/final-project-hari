@@ -70,8 +70,6 @@
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" name="password" id="Mypassword" placeholder="Admin Password">
-                        <!-- An element to toggle between password visibility -->
-                        <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -95,6 +93,7 @@
                 <form action="<?= base_url('admin/user/edit/'.$users['admin_id']); ?>"  method="post">
                     <?= csrf_field(); ?>
                     <div class="modal-body">
+                    <input type="hidden" name='passwordLama' value="<?= $users['admin_password'];?>">
                         <div class="form-group">
                             <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="nameE" name="nameE" placeholder="Admin Name">
                         </div>
@@ -102,9 +101,7 @@
                             <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="emailE" name="emailE" placeholder="Admin Email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="Password" name="password" placeholder="Password">
-                            <!-- An element to toggle between password visibility -->
-                            <input type="checkbox" onclick="editPassword()">Show Password
+                            <input type="password" class="form-control"  id="Password" name="password" placeholder="New Password">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -116,25 +113,6 @@
         </div>
     </div>
 <?php endforeach; ?>
-
-<script>
-  function myFunction() {
-  let x = document.querySelector("#Mypassword");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-  function editPassword() {
-  let y = document.querySelector("#Password");
-  if (y.type === "password") {
-    y.type = "text";
-  } else {
-    y.type = "password";
-  }
-}
-</script>
 
 <?= $this->endSection() ?>
 

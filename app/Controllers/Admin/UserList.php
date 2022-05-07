@@ -40,11 +40,17 @@ class UserList extends BaseController{
   }
 
   public function editData($id){
+    $passLama = $this->request->getPost('passwordLama');
+    if($passLama != $this->request->getPost('password')){
+      $password= $this->request->getPost('password');
+    }else{
+      $password= $passLama;
+    }
     $data = [
       'name'=>$this->request->getPost('nameE'),
       'email'=>$this->request->getPost('emailE'),
-      'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-      'text'=>$this->request->getPost('password'),
+      'password' => password_hash($password, PASSWORD_DEFAULT),
+      'text'=>$password,
       'id'=>$id
     ];
     $this->adminModel->updateData('updateData',$data);
