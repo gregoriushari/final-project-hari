@@ -96,15 +96,15 @@
                     <?= csrf_field(); ?>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="name" name="name" placeholder="Admin Name">
+                            <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="nameE" name="nameE" placeholder="Admin Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="email" name="email" placeholder="Admin Email">
+                            <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="emailE" name="emailE" placeholder="Admin Email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="Mypassword" name="password" placeholder="Password">
+                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="Password" name="password" placeholder="Password">
                             <!-- An element to toggle between password visibility -->
-                            <input type="checkbox" onclick="myFunction()">Show Password
+                            <input type="checkbox" onclick="editPassword()">Show Password
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -119,16 +119,23 @@
 
 <script>
   function myFunction() {
-  var x = document.getElementById("Mypassword");
+  let x = document.querySelector("#Mypassword");
   if (x.type === "password") {
     x.type = "text";
   } else {
     x.type = "password";
   }
 }
+  function editPassword() {
+  let y = document.querySelector("#Password");
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+}
 </script>
 
 <?= $this->endSection() ?>
 
-<!--  --> -->
 

@@ -8,7 +8,7 @@ class AdminModel extends BaseModel
 {
   protected $table                = 'admin_ms';
   protected $primaryKey           = 'admin_id';
-  protected $useSoftDeletes       = true;
+  protected $useSoftDeletes       = false;
 
   protected $allowedFields        = [
     'admin_id',

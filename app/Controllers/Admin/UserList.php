@@ -41,8 +41,8 @@ class UserList extends BaseController{
 
   public function editData($id){
     $data = [
-      'name'=>$this->request->getPost('name'),
-      'email'=>$this->request->getPost('email'),
+      'name'=>$this->request->getPost('nameE'),
+      'email'=>$this->request->getPost('emailE'),
       'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
       'text'=>$this->request->getPost('password'),
       'id'=>$id

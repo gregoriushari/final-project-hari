@@ -38,7 +38,7 @@
           <tr>
             <th scope="row"><?= $i; ?></th>
             <td><?= $laptops['laptop_name']; ?></td>
-            <td><img src="<?= base_url('img').'/'. $laptops['laptop_image'];?>"  width="400" height="200"></td>
+            <td><img src="<?= base_url('img').'/'. $laptops['laptop_image'];?>"  width="300" height="300"></td>
             <td><?= $laptops['updated_at']; ?></td>
             <td>
                 <a href="" data-toggle="modal" data-target="#editLaptop<?= $laptops['laptop_id'] ?>" class="badge badge-success"><i class="far fa-fw fa-edit"></i></a>
@@ -134,7 +134,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editGPU<?= $lpts['laptop_id'] ?>Label">Edit Laptop List</h5>
+                    <h5 class="modal-title" id="editLaptop<?= $lpts['laptop_id'] ?>Label">Edit Laptop List</h5>
                     <buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </buttond>
@@ -153,7 +153,7 @@
                           <select name="harga" id="harga" class="form-control">
                           <option value="">Price Range</option>
                               <?php foreach ($harga as $h) : ?>
-                                    <?php if ($laptops['harga_id'] == $h['harga_kriteria_id']) : ?>
+                                    <?php if ($lpts['harga_id'] == $h['harga_kriteria_id']) : ?>
                                         <option value="<?= $h['harga_kriteria_id']; ?>" selected> <?= $h['harga_kriteria_name']; ?> </option>
                                     <?php else : ?>
                                         <option value="<?= $h['harga_kriteria_id']; ?>"> <?= $h['harga_kriteria_name']; ?> </option>
@@ -165,7 +165,7 @@
                           <select name="memori" id="memori" class="form-control">
                           <option value="">Memory Storage</option>
                               <?php foreach ($memori as $m) : ?>
-                                    <?php if ($laptops['memori_id'] == $m['memori_kriteria_id']) : ?>
+                                    <?php if ($lpts['memori_id'] == $m['memori_kriteria_id']) : ?>
                                         <option value="<?= $m['memori_kriteria_id']; ?>" selected> <?= $m['memori_kriteria_name']; ?> </option>
                                     <?php else : ?>
                                         <option value="<?= $m['memori_kriteria_id']; ?>"> <?= $m['memori_kriteria_name']; ?> </option>
@@ -177,7 +177,7 @@
                           <select name="ram" id="ram" class="form-control">
                           <option value="">RAM Capacity</option>
                               <?php foreach ($ram as $r) : ?>
-                                    <?php if ($laptops['ram_id'] == $r['ram_kriteria_id']) : ?>
+                                    <?php if ($lpts['ram_id'] == $r['ram_kriteria_id']) : ?>
                                         <option value="<?= $r['ram_kriteria_id']; ?>" selected> <?= $r['ram_kriteria_name']; ?> </option>
                                     <?php else : ?>
                                         <option value="<?= $r['ram_kriteria_id']; ?>"> <?= $r['ram_kriteria_name']; ?> </option>
@@ -189,7 +189,7 @@
                           <select name="processor" id="processor" class="form-control">
                           <option value="">Processor Type</option>
                               <?php foreach ($processor as $p) : ?>
-                                    <?php if ($laptops['processor_id'] == $p['processor_kriteria_id']) : ?>
+                                    <?php if ($lpts['processor_id'] == $p['processor_kriteria_id']) : ?>
                                         <option value="<?= $p['processor_kriteria_id']; ?>" selected> <?= $p['processor_kriteria_name']; ?> </option>
                                     <?php else : ?>
                                         <option value="<?= $p['processor_kriteria_id']; ?>"> <?= $p['processor_kriteria_name']; ?> </option>
@@ -201,7 +201,7 @@
                           <select name="gpu" id="gpu" class="form-control">
                           <option value="">GPU Type</option>
                               <?php foreach ($gpu as $g) : ?>
-                                    <?php if ($laptops['gpu_id'] == $g['gpu_kriteria_id']) : ?>
+                                    <?php if ($lpts['gpu_id'] == $g['gpu_kriteria_id']) : ?>
                                         <option value="<?= $g['gpu_kriteria_id']; ?>" selected> <?= $g['gpu_kriteria_name']; ?> </option>
                                     <?php else : ?>
                                         <option value="<?= $g['gpu_kriteria_id']; ?>"> <?= $g['gpu_kriteria_name']; ?> </option>
