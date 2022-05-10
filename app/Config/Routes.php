@@ -33,6 +33,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->group('/', function ($routes) {
   $routes->get('', 'User\Home::index');
+  $routes->get('laptop', 'User\Laptop::index');
+  $routes->get('recomendation', 'User\Recomendation::index');
   $routes->get('login', 'Auth::index');
   $routes->get('logout', 'Auth::logout');
   $routes->post('login/process', 'Auth::login');
@@ -40,7 +42,7 @@ $routes->group('/', function ($routes) {
 
 $routes->group('admin',['filter' => 'userAuth'], function ($routes) {
   $routes->get('', 'Admin\AdminHome::index');
-
+ 
   $routes->group('user', function ($routes) {
     $routes->post('edit/(:any)', 'Admin\UserList::editData/$1');
     $routes->post('add', 'Admin\UserList::addData');
@@ -86,6 +88,8 @@ $routes->group('admin',['filter' => 'userAuth'], function ($routes) {
   $routes->group('laptop', function ($routes) {
     $routes->post('edit/(:any)', 'Admin\LaptopList::editData/$1');
     $routes->post('add', 'Admin\LaptopList::addData');
+    $routes->get('editdetail/(:any)', 'Admin\LaptopList::viewEditData/$1');
+    $routes->get('adddetail', 'Admin\LaptopList::viewAddData');
     $routes->get('delete/(:any)', 'Admin\LaptopList::deleteData/$1');
     $routes->get('', 'Admin\LaptopList::index');
   });

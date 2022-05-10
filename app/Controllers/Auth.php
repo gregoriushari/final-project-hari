@@ -32,7 +32,7 @@ class Auth extends BaseController
                 return redirect()->back();
             }
         } else {
-            session()->setFlashdata('error', 'Username & Password Salah');
+            session()->setFlashdata('error', 'Username / Password Salah');
             return redirect()->back();
         }
     }

@@ -19,7 +19,7 @@
 <?php } ?>
 
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
-  <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newLaptopModal">Add Laptop</a> 
+  <a class="btn btn-primary mb-3" href="<?=base_url('admin/laptop/adddetail');?>">Add Laptop</a> 
 </div>
 <div>
   <table id="table_id" class="display">
@@ -41,7 +41,7 @@
             <td><img src="<?= base_url('img').'/'. $laptops['laptop_image'];?>"  width="300" height="300"></td>
             <td><?= $laptops['updated_at']; ?></td>
             <td>
-                <a href="" data-toggle="modal" data-target="#editLaptop<?= $laptops['laptop_id'] ?>" class="badge badge-success"><i class="far fa-fw fa-edit"></i></a>
+                <a href="<?=base_url('admin/laptop/editdetail').'/'.$laptops['laptop_id'];?>" class="badge badge-success"><i class="far fa-fw fa-edit"></i></a>
                 <a href="<?= base_url('admin/laptop/delete/' . $laptops['laptop_id']) ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete  ?')"><i class="far fa-fw fa-trash-alt"></i></a>
             </td>
           </tr>
@@ -129,116 +129,5 @@
         </div>
     </div>
 </div>
-<?php foreach ($laptop as $lpts) : ?>
-    <div class="modal fade" id="editLaptop<?= $lpts['laptop_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editLaptop<?= $lpts['laptop_id'] ?>Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editLaptop<?= $lpts['laptop_id'] ?>Label">Edit Laptop List</h5>
-                    <buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </buttond>
-                </div>
-                <form action="<?= base_url('admin/laptop/edit/'.$lpts['laptop_id']); ?>"  method="post" enctype="multipart/form-data">
-                    <?= csrf_field(); ?>
-                    <input type="hidden" name='imageLama' value="<?= $lpts['laptop_image'];?>">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $lpts['laptop_name'] ?>" id="name" name="name" placeholder="Laptop Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" value="<?= $lpts['laptop_price'] ?>" id="price" name="price" placeholder="Laptop Price">
-                        </div>
-                        <div class="form-group">
-                          <select name="harga" id="harga" class="form-control">
-                          <option value="">Price Range</option>
-                              <?php foreach ($harga as $h) : ?>
-                                    <?php if ($lpts['harga_id'] == $h['harga_kriteria_id']) : ?>
-                                        <option value="<?= $h['harga_kriteria_id']; ?>" selected> <?= $h['harga_kriteria_name']; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $h['harga_kriteria_id']; ?>"> <?= $h['harga_kriteria_name']; ?> </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <select name="memori" id="memori" class="form-control">
-                          <option value="">Memory Storage</option>
-                              <?php foreach ($memori as $m) : ?>
-                                    <?php if ($lpts['memori_id'] == $m['memori_kriteria_id']) : ?>
-                                        <option value="<?= $m['memori_kriteria_id']; ?>" selected> <?= $m['memori_kriteria_name']; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $m['memori_kriteria_id']; ?>"> <?= $m['memori_kriteria_name']; ?> </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <select name="ram" id="ram" class="form-control">
-                          <option value="">RAM Capacity</option>
-                              <?php foreach ($ram as $r) : ?>
-                                    <?php if ($lpts['ram_id'] == $r['ram_kriteria_id']) : ?>
-                                        <option value="<?= $r['ram_kriteria_id']; ?>" selected> <?= $r['ram_kriteria_name']; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $r['ram_kriteria_id']; ?>"> <?= $r['ram_kriteria_name']; ?> </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <select name="processor" id="processor" class="form-control">
-                          <option value="">Processor Type</option>
-                              <?php foreach ($processor as $p) : ?>
-                                    <?php if ($lpts['processor_id'] == $p['processor_kriteria_id']) : ?>
-                                        <option value="<?= $p['processor_kriteria_id']; ?>" selected> <?= $p['processor_kriteria_name']; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $p['processor_kriteria_id']; ?>"> <?= $p['processor_kriteria_name']; ?> </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <select name="gpu" id="gpu" class="form-control">
-                          <option value="">GPU Type</option>
-                              <?php foreach ($gpu as $g) : ?>
-                                    <?php if ($lpts['gpu_id'] == $g['gpu_kriteria_id']) : ?>
-                                        <option value="<?= $g['gpu_kriteria_id']; ?>" selected> <?= $g['gpu_kriteria_name']; ?> </option>
-                                    <?php else : ?>
-                                        <option value="<?= $g['gpu_kriteria_id']; ?>"> <?= $g['gpu_kriteria_name']; ?> </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="image" id="image">
-                              <label for="image" class="custom-file-label"><?= $lpts['laptop_image'];?></label>
-                            </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
-    <script>
-      function editPreviewImg(){
-      const gambar = document.querySelector('#image1');
-      const imageLabel = document.querySelector('.coba1')
-      const imgPreview = document.querySelector('.img-preview1')
-    
-      console.log(gambar)
-      imageLabel.textContent = gambar.files[0].name
-      const fileImage = new FileReader()
-      fileImage.readAsDataURL(gambar.files[0])
-    
-      fileImage.onload = function(e){
-        imgPreview.src = e.target.result
-      }
-    }
-    </script>
+
 <?= $this->endSection() ?>

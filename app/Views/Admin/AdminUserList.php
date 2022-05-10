@@ -71,6 +71,9 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="password" id="Mypassword" placeholder="Admin Password">
                     </div>
+                    <div>
+                      <input type="checkbox" onclick="myFunction()">Show Password
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -93,15 +96,11 @@
                 <form action="<?= base_url('admin/user/edit/'.$users['admin_id']); ?>"  method="post">
                     <?= csrf_field(); ?>
                     <div class="modal-body">
-                    <input type="hidden" name='passwordLama' value="<?= $users['admin_password'];?>">
                         <div class="form-group">
                             <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="nameE" name="nameE" placeholder="Admin Name">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="emailE" name="emailE" placeholder="Admin Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control"  id="Password" name="password" placeholder="New Password">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -113,7 +112,16 @@
         </div>
     </div>
 <?php endforeach; ?>
-
+<script>
+  function myFunction() {
+  var x = document.getElementById("Mypassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 <?= $this->endSection() ?>
 
 

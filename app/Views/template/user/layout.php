@@ -64,14 +64,20 @@
                 <p>Home</p>
               </a>
           </li>
+          <?php $l='laptop';
+          $uri_l = $request->uri->getSegment(1);
+          ?>
           <li class="nav-item">
-              <a href="<?= base_url('')?>" class="nav-link ">
+              <a href="<?= base_url('laptop')?>" class="nav-link <?= ($uri_l == $l) ? 'active' : '' ?>">
                 <i class="nav-icon fa-solid fa-laptop"></i>
                 <p>Laptop List</p>
               </a>
           </li>
+          <?php $l='recomendation';
+          $uri_l = $request->uri->getSegment(1);
+          ?>
           <li class="nav-item">
-            <a href="<?= base_url('')?>" class="nav-link ">
+            <a href="<?= base_url('recomendation')?>" class="nav-link <?= ($uri_l == $l) ? 'active' : '' ?>">
               <i class="nav-icon fa-solid fa-calculator"></i>
               <p>Recomendation</p>
             </a>

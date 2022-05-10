@@ -32,6 +32,16 @@ class LaptopList extends BaseController
     return view('admin/adminlaptoplist', $data);
   }
 
+  public function viewAddData(){
+    $data['title'] = 'Add Data Laptop';
+    $data['ram'] = $this->ramModel->getData('data');
+    $data['gpu'] = $this->gpuModel->getData('data');
+    $data['harga'] = $this->hargaModel->getData('data');
+    $data['processor'] = $this->processorModel->getData('data');
+    $data['memori'] = $this->memoriModel->getData('data');
+    return view('admin/AdminAddLaptop', $data);
+  }
+
   public function addData(){
     $validation =  \Config\Services::validation();
     $validation->setRules([
@@ -71,6 +81,18 @@ class LaptopList extends BaseController
     }else{
       return redirect()->to('admin/laptop')->with('failed','Data tidak bisa ditambahkan');
     }
+  }
+
+  public function viewEditData($id){
+    $data['title'] = 'Edit Data Laptop';
+    $data['id']=$id;
+    $data['laptop'] =$this->laptopModel->getData('findById', $data);
+    $data['ram'] = $this->ramModel->getData('data');
+    $data['gpu'] = $this->gpuModel->getData('data');
+    $data['harga'] = $this->hargaModel->getData('data');
+    $data['processor'] = $this->processorModel->getData('data');
+    $data['memori'] = $this->memoriModel->getData('data');
+    return view('admin/AdminEditLaptop', $data);
   }
   
   public function editData($id){

@@ -84,9 +84,7 @@ class AdminModel extends BaseModel
       case 'updateData':
         $postData = [
           'admin_name'=>$data['name'],
-          'admin_email'=>$data['email'],
-          'admin_password'=>$data['password'],
-          'admin_password_text'=>$data['text']
+          'admin_email'=>$data['email']
         ];
         return $this->update($data['id'],$postData);
         break;
