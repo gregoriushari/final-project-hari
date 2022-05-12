@@ -67,6 +67,24 @@ class LaptopModel extends BaseModel
         $this->select('harga_kriteria_ms.harga_kriteria_name');
         $this->select('processor_kriteria_ms.processor_kriteria_name');
         $this->select('laptop_ms.*');
+        $result = $this->find($data['id']);
+        break;
+      case 'JoinDataBobot':
+        $this->select('laptop_ms.laptop_id');
+        $this->select('laptop_ms.laptop_name');
+        $this->select('laptop_ms.laptop_price');
+        $this->select('laptop_ms.laptop_image');
+        $this->select('harga_kriteria_ms.harga_kriteria_bobot');
+        $this->select('ram_kriteria_ms.ram_kriteria_bobot');
+        $this->select('gpu_kriteria_ms.gpu_kriteria_bobot');
+        $this->select('memori_kriteria_ms.memori_kriteria_bobot');
+        $this->select('processor_kriteria_ms.processor_kriteria_bobot');
+        $this->join('ram_kriteria_ms', 'ram_kriteria_ms.ram_kriteria_id = laptop_ms.ram_id');
+        $this->join('gpu_kriteria_ms', 'gpu_kriteria_ms.gpu_kriteria_id = laptop_ms.gpu_id');
+        $this->join('memori_kriteria_ms', 'memori_kriteria_ms.memori_kriteria_id = laptop_ms.memori_id');
+        $this->join('harga_kriteria_ms', 'harga_kriteria_ms.harga_kriteria_id = laptop_ms.harga_id'); 
+        $this->join('processor_kriteria_ms', 'processor_kriteria_ms.processor_kriteria_id = laptop_ms.processor_id');
+        $this->where('harga_kriteria_ms.harga_kriteria_id', $data['id_price']);
         $result = $this->findAll();
         break;
       case 'countData':

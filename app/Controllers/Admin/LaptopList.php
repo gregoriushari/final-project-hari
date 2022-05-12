@@ -47,7 +47,7 @@ class LaptopList extends BaseController
     $validation->setRules([
         'name' => 'required',
         'price' => 'required',
-        'harga' => 'required',
+        'priceRange' => 'required',
         'ram' => 'required',
         'gpu' => 'required',
         'processor' => 'required',
@@ -57,7 +57,6 @@ class LaptopList extends BaseController
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
       $fileImage = $this->request->getFile('image');
-
       if($fileImage->getError()==4){
         $namaImage='default.jpg';
       }else{
@@ -79,7 +78,8 @@ class LaptopList extends BaseController
       $this->laptopModel->insertData('insertData',$data);
       return redirect()->to('admin/laptop')->with('success','Data berhasil ditambahkan');
     }else{
-      return redirect()->to('admin/laptop')->with('failed','Data tidak bisa ditambahkan');
+      session()->setFlashdata('error', $validation->listErrors());
+      return redirect('admin/laptop/adddetail')->withInput();
     }
   }
 

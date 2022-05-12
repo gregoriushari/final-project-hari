@@ -1,6 +1,18 @@
 <?= $this->extend('template/admin/layout') ?>
 
 <?= $this->section('content') ?>
+<?php if(session()->getFlashData('error')){?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4>Periksa Entrian Form</h4>
+    </hr />
+    <?= session()->getFlashData('error') ?>
+    
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
+
 <div class="card card-default">
 		<div class="card-header">
 			<a href="<?= base_url('admin/laptop') ?>" title="" class="btn btn-danger btn-sm float-right text-right">
@@ -13,62 +25,62 @@
 				<div class="row">
 					<div class="col-12 col-md-6 col-lg-6">
 						<div class="form-group">
-                <label for="name">Laptop Name</label>
-                <input type="text" class="form-control col-md-6 form-control-sm" id="name" name="name" >
+                <label>Laptop Name</label>
+                <input type="text" class="form-control col-md-6 form-control-sm" value="<?= old('name'); ?>"id="name" name="name" >
             </div>
             <div class="form-group">
-                <label for="name">Laptop Price</label>
-                <input type="number" class="form-control col-md-6 form-control-sm " id="price" name="price" >
+                <label>Laptop Price</label>
+                <input type="number" class="form-control col-md-6 form-control-sm " value="<?= old('price'); ?>"id="price" name="price" >
             </div>
             <div class="form-group">
-                <label for="name">Laptop Price Range</label>
-                <select name="harga" id="harga" class="form-control form-control-sm col-md-4">
-                    <option value="">Price Range</option>
+                <label>Laptop Price Range</label>
+                <select name="priceRange" id="priceRange" class="form-control form-control-sm col-md-4">
+                    <option hidden>Price Range</option>
                       <?php foreach ($harga as $h) : ?>
-                          <option value="<?= $h['harga_kriteria_id']; ?>"><?= $h['harga_kriteria_name']; ?></option>
+                          <option <?= (old('priceRange') == $h['harga_kriteria_id']) ? 'selected' : ''; ?> value="<?= $h['harga_kriteria_id']; ?>"><?= $h['harga_kriteria_name']; ?></option>
                       <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">
-                <label for="name">Laptop Memory Storage</label>
+                <label>Laptop Memory Storage</label>
                 <select name="memori" id="memori" class="form-control form-control-sm col-md-4">
                 <option value="">Memory Storage</option>
                 <?php foreach ($memori as $m) : ?>
-                    <option value="<?= $m['memori_kriteria_id']; ?>"><?= $m['memori_kriteria_name']; ?></option>
+                    <option <?= (old('memori') == $m['memori_kriteria_id']) ? 'selected' : ''; ?> value="<?= $m['memori_kriteria_id']; ?>"><?= $m['memori_kriteria_name']; ?></option>
                 <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">
-                <label for="name">Laptop RAM Storage</label>
+                <label>Laptop RAM Storage</label>
                   <select name="ram" id="ram" class="form-control form-control-sm col-md-4">
                   <option value="">RAM Capacity</option>
                     <?php foreach ($ram as $r) : ?>
-                      <option value="<?= $r['ram_kriteria_id']; ?>"><?= $r['ram_kriteria_name']; ?></option>
+                      <option <?= (old('ram') == $r['ram_kriteria_id']) ? 'selected' : ''; ?> value="<?= $r['ram_kriteria_id']; ?>"><?= $r['ram_kriteria_name']; ?></option>
                     <?php endforeach; ?>
                 </select>
               </div>          
               <div class="form-group">
-              <label for="name">Laptop Processor</label>
+              <label>Laptop Processor</label>
                 <select name="processor" id="processor" class="form-control form-control-sm col-md-4">
                 <option value="">Processor Type</option>
                   <?php foreach ($processor as $p) : ?>
-                      <option value="<?= $p['processor_kriteria_id']; ?>"><?= $p['processor_kriteria_name']; ?></option>
+                      <option <?= (old('processor') == $p['processor_kriteria_id']) ? 'selected' : ''; ?> value="<?= $p['processor_kriteria_id']; ?>"><?= $p['processor_kriteria_name']; ?></option>
                     <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">
-              <label for="name">Laptop GPU</label>
+              <label>Laptop GPU</label>
                 <select name="gpu" id="gpu" class="form-control form-control-sm col-md-4">
                 <option value="">GPU Type</option>
                     <?php foreach ($gpu as $g) : ?>
-                      <option value="<?= $g['gpu_kriteria_id']; ?>"><?= $g['gpu_kriteria_name']; ?></option>
+                      <option <?= (old('gpu') == $g['gpu_kriteria_id']) ? 'selected' : ''; ?> value="<?= $g['gpu_kriteria_id']; ?>"><?= $g['gpu_kriteria_name']; ?></option>
                     <?php endforeach; ?>
                 </select>
               </div>
           </div>						
 					<div class="col-12 col-md-6 col-lg-6">
 						<div class="form-group">
-							<label for="">Upload Photo</label>
+							<label>Upload Photo</label>
 							<div class="col-md-3">
 								<div class="form-group text-center">
                   <img src="/img/default.jpg" class="img-thumbnail img-preview">
