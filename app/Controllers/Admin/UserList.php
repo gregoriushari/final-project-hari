@@ -22,6 +22,18 @@ class UserList extends BaseController{
         'name' => 'required',
         'email' => 'required|valid_email|is_unique[admin_ms.admin_email]|',
         'password' => 'required'
+    ],[
+        'name' => [
+            'required' => 'Field Nama harus diisi',
+        ],
+        'email' => [
+            'required' => 'Field Email harus diisi',
+            'valid_email' => 'Field Email harus valid',
+            'is_unique' => 'Email sudah terdaftar',
+        ],
+        'password' => [
+            'required' => 'Field Password harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -34,8 +46,8 @@ class UserList extends BaseController{
       $this->adminModel->insertData('insertData',$data);
       return redirect()->to('admin/user')->with('success','Data berhasil ditambahkan');
     }else{
-      $data['validation'] = $this->validator;
-      return redirect()->to('admin/user')->with('error','Data tidak bisa ditambahkan');
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/user')->withInput();
     }
   }
 
@@ -45,8 +57,11 @@ class UserList extends BaseController{
       'email'=>$this->request->getPost('emailE'),
       'id'=>$id
     ];
-    $this->adminModel->updateData('updateData',$data);
-    return redirect()->to('admin/user')->with('success','Data berhasil diubah');
+    if($this->adminModel->updateData('updateData',$data)){
+      return redirect()->to('admin/user')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/user')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){
