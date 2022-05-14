@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="row">
 <?php foreach($laptop as $laptops): ?>
-	<div class="col-lg-3 d-flex align-items-stretch">
+	<div class="col-lg-4 d-flex align-items-stretch">
 		<div class="card">
     <img src="<?= base_url('img').'/'. $laptops['laptop_image'];?>" class="card-img-top" alt="...">
 			<div class="card-body">

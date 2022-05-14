@@ -55,6 +55,10 @@ class LaptopModel extends BaseModel
       case 'data':
         $result = $this->findAll();
         break;
+      case 'randomData':
+        $this->orderBy('laptop_id', 'RANDOM');
+        $result = $this->findAll(4);
+        break;
       case 'Joindata':
         $this->join('ram_kriteria_ms', 'ram_kriteria_ms.ram_kriteria_id = laptop_ms.ram_id');
         $this->join('gpu_kriteria_ms', 'gpu_kriteria_ms.gpu_kriteria_id = laptop_ms.gpu_id');
