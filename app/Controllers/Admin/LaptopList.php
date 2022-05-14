@@ -53,6 +53,33 @@ class LaptopList extends BaseController
         'processor' => 'required',
         'memori' => 'required',
         'image'=>'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]'
+    ],[
+      'name'=>[
+        'required'=>'Field Nama harus diisi'
+      ],
+      'price'=>[
+        'required'=>'Field Harga harus diisi'
+      ],
+      'priceRange' => [
+        'required' => 'Field Price Range harus diisi',
+      ],
+      'ram' => [
+        'required' => 'Field RAM harus diisi',
+      ],
+      'gpu' => [
+        'required' => 'Field GPU harus diisi',
+      ],
+      'processor' => [
+        'required' => 'Field Processor harus diisi',
+      ],
+      'memori' => [
+        'required' => 'Field Memori harus diisi',
+      ],
+      'image'=>[
+        'max_size'=>'File gambar terlalu besar',
+        'is_image'=>'File yang diupload bukan gambar',
+        'mime_in'=>'File gambar harus jpg,jpeg,png'
+      ]
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){

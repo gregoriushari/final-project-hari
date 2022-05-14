@@ -22,6 +22,13 @@ class KriteriaGpuList extends BaseController
     $validation->setRules([
         'name' => 'required',
         'bobot' => 'required'
+    ],[
+        'name' => [
+            'required' => 'Field GPU Name harus diisi',
+        ],
+        'bobot' => [
+            'required' => 'Field Bobot harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -32,7 +39,8 @@ class KriteriaGpuList extends BaseController
       $this->gpuModel->insertData('insertData',$data);
       return redirect()->to('admin/gpu')->with('success','Data berhasil ditambahkan');
     }else{
-      return redirect()->to('admin/gpu')->with('failed','Data tidak bisa ditambahkan');
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/gpu')->withInput();
     }
   }
 
@@ -42,8 +50,11 @@ class KriteriaGpuList extends BaseController
       'bobot'=>$this->request->getPost('bobot'),
       'id'=>$id
     ];
-    $this->gpuModel->updateData('updateData',$data);
-    return redirect()->to('admin/gpu')->with('success','Data berhasil diubah');
+    if($this->gpuModel->updateData('updateData',$data)){
+      return redirect()->to('admin/gpu')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/gpu')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){

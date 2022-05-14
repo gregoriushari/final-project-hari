@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label>Laptop Price Range</label>
                 <select name="priceRange" id="priceRange" class="form-control form-control-sm col-md-4">
-                    <option hidden>Price Range</option>
+                    <option value="">Price Range</option>
                       <?php foreach ($harga as $h) : ?>
                           <option <?= (old('priceRange') == $h['harga_kriteria_id']) ? 'selected' : ''; ?> value="<?= $h['harga_kriteria_id']; ?>"><?= $h['harga_kriteria_name']; ?></option>
                       <?php endforeach; ?>

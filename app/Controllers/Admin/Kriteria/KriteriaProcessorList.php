@@ -21,6 +21,13 @@ class KriteriaProcessorList extends BaseController
     $validation->setRules([
         'name' => 'required',
         'bobot' => 'required'
+    ],[
+        'name' => [
+            'required' => 'Field Processor Name harus diisi',
+        ],
+        'bobot' => [
+            'required' => 'Field Bobot harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -32,7 +39,8 @@ class KriteriaProcessorList extends BaseController
       $this->processorModel->insertData('insertData',$data);
       return redirect()->to('admin/processor')->with('success','Data berhasil ditambahkan');
     }else{
-      return redirect()->to('admin/processor')->with('failed','Data tidak bisa ditambahkan');
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/processor')->withInput();
     }
   }
 
@@ -42,8 +50,11 @@ class KriteriaProcessorList extends BaseController
       'bobot'=>$this->request->getPost('bobot'),
       'id'=>$id
     ];
-    $this->processorModel->updateData('updateData',$data);
-    return redirect()->to('admin/processor')->with('success','Data berhasil diubah');
+    if($this->processorModel->updateData('updateData',$data)){
+      return redirect()->to('admin/processor')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/processor')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){

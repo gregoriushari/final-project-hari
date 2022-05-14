@@ -22,6 +22,13 @@ class KriteriaHargaList extends BaseController
     $validation->setRules([
         'name' => 'required',
         'bobot' => 'required'
+    ],[
+        'name' => [
+          'required' => 'Field Price Range harus diisi',
+        ],
+        'bobot' => [
+          'required' => 'Field Bobot harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -33,7 +40,8 @@ class KriteriaHargaList extends BaseController
       $this->hargaModel->insertData('insertData',$data);
       return redirect()->to('admin/harga')->with('success','Data berhasil ditambahkan');
     }else{
-      return redirect()->to('admin/harga')->with('failed','Data berhasil ditambahkan');
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/harga')->withInput();
     }
   }
 
@@ -43,8 +51,11 @@ class KriteriaHargaList extends BaseController
       'bobot'=>$this->request->getPost('bobot'),
       'id'=>$id
     ];
-    $this->hargaModel->updateData('updateData',$data);
-    return redirect()->to('admin/harga')->with('success','Data berhasil diubah');
+    if($this->hargaModel->updateData('updateData',$data)){
+      return redirect()->to('admin/harga')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/harga')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){

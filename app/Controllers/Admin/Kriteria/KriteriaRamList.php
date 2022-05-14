@@ -22,6 +22,13 @@ class KriteriaRamList extends BaseController{
     $validation->setRules([
         'name' => 'required',
         'bobot' => 'required'
+    ],[
+        'name' => [
+            'required' => 'Field RAM Storage harus diisi',
+        ],
+        'bobot' => [
+            'required' => 'Field Bobot harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -33,7 +40,8 @@ class KriteriaRamList extends BaseController{
       $this->ramModel->insertData('insertData',$data);
       return redirect()->to('admin/ram')->with('success','Data berhasil ditambahkan');
     }else{
-      return redirect()->to('admin/ram')->with('failed','Data tidak bisa ditambahkan');
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/ram')->withInput();
     }
   }
 
@@ -43,8 +51,11 @@ class KriteriaRamList extends BaseController{
       'bobot'=>$this->request->getPost('bobot'),
       'id'=>$id
     ];
-    $this->ramModel->updateData('updateData',$data);
-    return redirect()->to('admin/ram')->with('success','Data berhasil diubah');
+    if($this->ramModel->updateData('updateData',$data)){
+      return redirect()->to('admin/ram')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/ram')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){
