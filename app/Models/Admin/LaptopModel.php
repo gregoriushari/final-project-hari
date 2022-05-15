@@ -92,11 +92,11 @@ class LaptopModel extends BaseModel
         $result = $this->findAll();
         break;
       case 'getMinMax':
-        $this->selectMax('harga_kriteria_ms.harga_kriteria_bobot');
-        $this->selectMin('ram_kriteria_ms.ram_kriteria_bobot');
-        $this->selectMin('gpu_kriteria_ms.gpu_kriteria_bobot');
-        $this->selectMin('memori_kriteria_ms.memori_kriteria_bobot');
-        $this->selectMin('processor_kriteria_ms.processor_kriteria_bobot');
+        $this->selectMin('harga_kriteria_ms.harga_kriteria_bobot');
+        $this->selectMax('ram_kriteria_ms.ram_kriteria_bobot');
+        $this->selectMax('gpu_kriteria_ms.gpu_kriteria_bobot');
+        $this->selectMax('memori_kriteria_ms.memori_kriteria_bobot');
+        $this->selectMax('processor_kriteria_ms.processor_kriteria_bobot');
         $this->join('ram_kriteria_ms', 'ram_kriteria_ms.ram_kriteria_id = laptop_ms.ram_id');
         $this->join('gpu_kriteria_ms', 'gpu_kriteria_ms.gpu_kriteria_id = laptop_ms.gpu_id');
         $this->join('memori_kriteria_ms', 'memori_kriteria_ms.memori_kriteria_id = laptop_ms.memori_id');

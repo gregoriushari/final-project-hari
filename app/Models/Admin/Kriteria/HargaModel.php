@@ -44,7 +44,7 @@ class HargaModel extends BaseModel
         $result = $this->findAll();
         break;
       case 'findById':
-        $result = $this->find($data['price_id']);
+        $result = $this->find($data['id_price']);
         break;
     }
     return $result;
