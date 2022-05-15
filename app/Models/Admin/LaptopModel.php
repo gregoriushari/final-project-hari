@@ -91,6 +91,20 @@ class LaptopModel extends BaseModel
         $this->where('harga_kriteria_ms.harga_kriteria_id', $data['id_price']);
         $result = $this->findAll();
         break;
+      case 'getMinMax':
+        $this->selectMax('harga_kriteria_ms.harga_kriteria_bobot');
+        $this->selectMin('ram_kriteria_ms.ram_kriteria_bobot');
+        $this->selectMin('gpu_kriteria_ms.gpu_kriteria_bobot');
+        $this->selectMin('memori_kriteria_ms.memori_kriteria_bobot');
+        $this->selectMin('processor_kriteria_ms.processor_kriteria_bobot');
+        $this->join('ram_kriteria_ms', 'ram_kriteria_ms.ram_kriteria_id = laptop_ms.ram_id');
+        $this->join('gpu_kriteria_ms', 'gpu_kriteria_ms.gpu_kriteria_id = laptop_ms.gpu_id');
+        $this->join('memori_kriteria_ms', 'memori_kriteria_ms.memori_kriteria_id = laptop_ms.memori_id');
+        $this->join('harga_kriteria_ms', 'harga_kriteria_ms.harga_kriteria_id = laptop_ms.harga_id'); 
+        $this->join('processor_kriteria_ms', 'processor_kriteria_ms.processor_kriteria_id = laptop_ms.processor_id');
+        $this->where('harga_kriteria_ms.harga_kriteria_id', $data['id_price']);
+        $result = $this->findAll();
+        break;
       case 'countData':
         $result = $this->countAllResults();
         break;
