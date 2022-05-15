@@ -22,6 +22,13 @@ class KriteriaMemoriList extends BaseController
     $validation->setRules([
         'name' => 'required',
         'bobot' => 'required'
+    ],[
+        'name' => [
+            'required' => 'Field Memori Storage harus diisi',
+        ],
+        'bobot' => [
+            'required' => 'Field Bobot harus diisi',
+        ],
     ]);
     $isDataValid = $validation->withRequest($this->request)->run();
     if($isDataValid){
@@ -32,6 +39,9 @@ class KriteriaMemoriList extends BaseController
       
       $this->memoriModel->insertData('insertData',$data);
       return redirect()->to('admin/memori')->with('success','Data berhasil ditambahkan');
+    }else{
+      session()->setFlashdata('failed', $validation->listErrors());
+      return redirect('admin/memori')->withInput();
     }
   }
 
@@ -41,8 +51,11 @@ class KriteriaMemoriList extends BaseController
       'bobot'=>$this->request->getPost('bobot'),
       'id'=>$id
     ];
-    $this->memoriModel->updateData('updateData',$data);
-    return redirect()->to('admin/memori')->with('success','Data berhasil diubah');
+    if($this->memoriModel->updateData('updateData',$data)){
+      return redirect()->to('admin/memori')->with('success','Data berhasil diubah');
+    }else{
+      return redirect()->to('admin/memori')->with('failed','Data gagal diubah');
+    }
   }
 
   public function deleteData($id){

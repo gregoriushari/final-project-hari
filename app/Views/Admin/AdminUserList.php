@@ -9,9 +9,9 @@
     </button>
 </div>
 <?php } ?>
-<?php if(session()->getFlashData('error')){?>
+<?php if(session()->getFlashData('failed')){?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <?= session()->getFlashData('error') ?>
+    <?= session()->getFlashData('failed') ?>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -63,15 +63,19 @@
             <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Admin Name">
+                        <label for="admin_name">Admin Name</label>
+                        <input type="text" class="form-control" value="<?= old('name');?>" name="name" id="name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Admin Email">
+                        <label for="admin_email">Admin Email</label>
+                        <input type="text" class="form-control" value="<?= old('email');?>"  name="email" id="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="Mypassword" placeholder="Admin Password">
-                        <!-- An element to toggle between password visibility -->
-                        <input type="checkbox" onclick="myFunction()">Show Password
+                        <label for="admin_password">Admin Password</label>
+                        <input type="password" class="form-control" name="password" id="Mypassword">
+                    </div>
+                    <div>
+                      <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -96,15 +100,12 @@
                     <?= csrf_field(); ?>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="name" name="name" placeholder="Admin Name">
+                            <label for="admin_name">Admin Name</label>
+                            <input type="text" class="form-control" value="<?= $users['admin_name'] ?>" id="nameE" name="nameE" >
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="email" name="email" placeholder="Admin Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" value="<?= $users['admin_password_text'] ?>" id="Mypassword" name="password" placeholder="Password">
-                            <!-- An element to toggle between password visibility -->
-                            <input type="checkbox" onclick="myFunction()">Show Password
+                            <label for="admin_email">Admin Email</label>
+                            <input type="text" class="form-control" value="<?= $users['admin_email'] ?>" id="emailE" name="emailE">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -116,7 +117,6 @@
         </div>
     </div>
 <?php endforeach; ?>
-
 <script>
   function myFunction() {
   var x = document.getElementById("Mypassword");
@@ -127,8 +127,6 @@
   }
 }
 </script>
-
 <?= $this->endSection() ?>
 
-<!--  --> -->
 

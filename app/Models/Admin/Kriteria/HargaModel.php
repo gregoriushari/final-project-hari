@@ -37,11 +37,14 @@ class HargaModel extends BaseModel
     'bobot'=>'harga_kriteria_bobot',
   ];
 
-  function getData($flag='', $data='', $convertLabel=''){
+  function getData($flag='', $data=''){
     $result = [];
     switch ($flag) {
       case 'data':
         $result = $this->findAll();
+        break;
+      case 'findById':
+        $result = $this->find($data['id_price']);
         break;
     }
     return $result;

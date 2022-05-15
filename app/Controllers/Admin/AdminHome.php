@@ -14,6 +14,7 @@ class AdminHome extends BaseController{
   public function index(){
     $data['title'] = 'Dashboard Admin';
     $data['userCount'] = $this->adminModel->getData('countData');
+    $data['laptop']=$this->laptopModel->getData('data');
     $data['laptopCount'] = $this->laptopModel->getData('countData');
     return view('admin/adminHome', $data);
   }

@@ -9,6 +9,14 @@
     </button>
 </div>
 <?php endif ; ?>
+<?php if(session()->getFlashData('failed')):?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashData('failed') ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif ; ?>
 
 <div style="display:flex; justify-content:flex-end; width:100%; padding:0;">
   <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMemoriModal">Add Memori</a> 
@@ -56,10 +64,12 @@
             <?= csrf_field(); ?>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Memory Storage">
+                        <label for="memori_kriteria_name">Memory Storage</label>
+                        <input type="text" class="form-control" value="<?= old('name');?>" name="name" id="name" >
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="bobot" id="bobot" placeholder="Bobot">
+                        <label for="memori_kriteria_bobot">Bobot</label>
+                        <input type="number" class="form-control" value="<?= old('bobot');?>" name="bobot" id="bobot">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -85,10 +95,12 @@
                     <?= csrf_field(); ?>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" value="<?= $memoris['memori_kriteria_name'] ?>" id="name" name="name" placeholder="Memory Storage">
+                            <label for="memori_kriteria_name">Memory Storage</label>
+                            <input type="text" class="form-control" value="<?= $memoris['memori_kriteria_name'] ?>" id="name" name="name" >
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" value="<?= $memoris['memori_kriteria_bobot'] ?>" id="bobot" name="bobot" placeholder="Bobot">
+                            <label for="memori_kriteria_bobot">Bobot</label>
+                            <input type="number" class="form-control" value="<?= $memoris['memori_kriteria_bobot'] ?>" id="bobot" name="bobot" >
                         </div>
                     </div>
                     <div class="modal-footer">
