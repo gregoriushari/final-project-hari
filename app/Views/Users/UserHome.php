@@ -1,10 +1,8 @@
 <?= $this->extend('template/user/layout') ?>
 
 <?= $this->section('content') ?>
-<div class="site-index">
-    <div class="jumbotron" style = 'text-align:center;'>
-        <h2><b>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN LAPTOP</b></h2>
-    </div>
+<div class="jumbotron" style = 'text-align:center;'>
+  <h2><b>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN LAPTOP</b></h2>
 </div>
 <div>
   <h3>Our Laptop List</h3>
@@ -22,7 +20,7 @@
           <h4><?= $laptops['laptop_name']; ?></h4>
         </div>
         <br><br>
-				<h5>Rp. <?= $laptops['laptop_price']; ?></h5>
+				<h5>Rp. <?= number_format($laptops['laptop_price'],2,',','.'); ?></h5>
 			</div>
 		</div>
 	</div>
