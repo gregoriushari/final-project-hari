@@ -94,7 +94,7 @@ class LaptopList extends BaseController
       $data = [
         'name'=>$this->request->getPost('name'),
         'price'=>$this->request->getPost('price'),
-        'harga'=>$this->request->getPost('harga'),
+        'harga'=>$this->request->getPost('priceRange'),
         'ram'=>$this->request->getPost('ram'),
         'gpu'=>$this->request->getPost('gpu'),
         'processor'=>$this->request->getPost('processor'),

@@ -76,11 +76,11 @@ class Recomendation extends BaseController{
           $normalisasi[$key]['laptop_name'] = $laptop['laptop_name'];
           $normalisasi[$key]['laptop_price'] = $laptop['laptop_price'];
           $normalisasi[$key]['laptop_image'] = $laptop['laptop_image'];
-          $normalisasi[$key]['harga_kriteria_bobot'] = $minMax['harga_kriteria_bobot']/$laptop['harga_kriteria_bobot'];
-          $normalisasi[$key]['ram_kriteria_bobot'] = $laptop['ram_kriteria_bobot']/$minMax['ram_kriteria_bobot'];
-          $normalisasi[$key]['gpu_kriteria_bobot'] = $laptop['gpu_kriteria_bobot']/$minMax['gpu_kriteria_bobot'];
-          $normalisasi[$key]['processor_kriteria_bobot'] = $laptop['processor_kriteria_bobot']/$minMax['processor_kriteria_bobot'];
-          $normalisasi[$key]['memori_kriteria_bobot'] = $laptop['memori_kriteria_bobot']/$minMax['memori_kriteria_bobot'];
+          $normalisasi[$key]['harga'] = $minMax['harga_kriteria_bobot']/$laptop['harga_kriteria_bobot'];
+          $normalisasi[$key]['ram'] = $laptop['ram_kriteria_bobot']/$minMax['ram_kriteria_bobot'];
+          $normalisasi[$key]['gpu'] = $laptop['gpu_kriteria_bobot']/$minMax['gpu_kriteria_bobot'];
+          $normalisasi[$key]['processor'] = $laptop['processor_kriteria_bobot']/$minMax['processor_kriteria_bobot'];
+          $normalisasi[$key]['memori'] = $laptop['memori_kriteria_bobot']/$minMax['memori_kriteria_bobot'];
         }
       }
 
@@ -90,17 +90,17 @@ class Recomendation extends BaseController{
         $nilai_v[$key]['laptop_name'] = $normal['laptop_name'];
         $nilai_v[$key]['laptop_price'] = $normal['laptop_price'];
         $nilai_v[$key]['laptop_image'] = $normal['laptop_image'];
-        $nilai_v[$key]['harga_kriteria_bobot'] = $normal['harga_kriteria_bobot']*$w[0];
-        $nilai_v[$key]['ram_kriteria_bobot'] = $normal['ram_kriteria_bobot']*$w[1];
-        $nilai_v[$key]['gpu_kriteria_bobot'] = $normal['gpu_kriteria_bobot']*$w[2];
-        $nilai_v[$key]['processor_kriteria_bobot'] = $normal['processor_kriteria_bobot']*$w[3];
-        $nilai_v[$key]['memori_kriteria_bobot'] = $normal['memori_kriteria_bobot']*$w[4];
+        $nilai_v[$key]['harga'] = $normal['harga']*$w[0];
+        $nilai_v[$key]['ram'] = $normal['ram']*$w[1];
+        $nilai_v[$key]['gpu'] = $normal['gpu']*$w[2];
+        $nilai_v[$key]['processor'] = $normal['processor']*$w[3];
+        $nilai_v[$key]['memori'] = $normal['memori']*$w[4];
       }
       
       //menghitung nilai v total
       foreach($nilai_v as $key => $nilai){
-        $nilai_v[$key]['nilai_v'] = $nilai['harga_kriteria_bobot']+$nilai['ram_kriteria_bobot']+$nilai['gpu_kriteria_bobot']
-        +$nilai['processor_kriteria_bobot']+$nilai['memori_kriteria_bobot'];
+        $nilai_v[$key]['nilai_v'] = $nilai['harga']+$nilai['ram']+$nilai['gpu']
+        +$nilai['processor']+$nilai['memori'];
       }
 
       foreach($nilai_v as $key => $nilai){
