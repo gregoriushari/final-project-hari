@@ -32,8 +32,9 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->group('/', function ($routes) {
+
   $routes->get('laptop/(:any)', 'User\Laptop::detail/$1');
-  $routes->post('recomendation/process', 'User\Recomendation::recomendation');
+  $routes->post('recomendation/result', 'User\Recomendation::recomendation');
   $routes->get('laptop', 'User\Laptop::index');
   $routes->get('recomendation', 'User\Recomendation::index');
   $routes->get('login', 'Auth::index');

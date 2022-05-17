@@ -24,7 +24,7 @@
       </div>
     </div>
 <div class="card card-default">
-    <form  action="<?= base_url('recomendation/process'); ?>" method="post" enctype="multipart/form-data">
+    <form  action="<?= base_url('recomendation/result'); ?>" method="post" enctype="multipart/form-data">
       <?= csrf_field(); ?>
 			<div class="card-body">
 				<div class="row">
