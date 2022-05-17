@@ -3,6 +3,12 @@
 <?= $this->section('content') ?>
 <div class="jumbotron" style = 'text-align:center;'>
   <h2><b>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN LAPTOP</b></h2>
+  <p>How To use this web</p>
+  <ul style="text-align: center; list-style-position: inside;">
+    <li >Go to Recomendation Tab</li>
+    <li >Fill with the criteria you want</li>
+    <li >Click go to know your best laptop for you from your criteria</li>
+  </ul>
 </div>
 <div>
   <h3>Our Laptop List</h3>
