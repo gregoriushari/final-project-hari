@@ -22,6 +22,9 @@
         <br><br>
 				<h5>Rp. <?= number_format($laptops['laptop_price'],2,',','.'); ?></h5>
 			</div>
+      <div class="card-footer">
+        <a href="<?= base_url('laptop').'/'.$laptops['laptop_id']; ?>" class="btn btn-primary" target="_blank">Detail</a>
+			</div>
 		</div>
 	</div>
   <?php endforeach; ?>
