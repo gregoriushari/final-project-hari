@@ -69,6 +69,9 @@ class Recomendation extends BaseController{
         $this->request->getPost('memori')
       ];
 
+      // var_dump($laptopData);
+      // die;
+
       //proses normalisasi
       foreach($laptopData as $key => $laptop){
         foreach($minMaxLaptop as $minMax){
@@ -77,12 +80,15 @@ class Recomendation extends BaseController{
           $normalisasi[$key]['laptop_price'] = $laptop['laptop_price'];
           $normalisasi[$key]['laptop_image'] = $laptop['laptop_image'];
           $normalisasi[$key]['harga'] = $minMax['harga_kriteria_bobot']/$laptop['harga_kriteria_bobot'];
-          $normalisasi[$key]['ram'] = $laptop['ram_kriteria_bobot']/$minMax['ram_kriteria_bobot'];
           $normalisasi[$key]['gpu'] = $laptop['gpu_kriteria_bobot']/$minMax['gpu_kriteria_bobot'];
           $normalisasi[$key]['processor'] = $laptop['processor_kriteria_bobot']/$minMax['processor_kriteria_bobot'];
           $normalisasi[$key]['memori'] = $laptop['memori_kriteria_bobot']/$minMax['memori_kriteria_bobot'];
+          $normalisasi[$key]['ram'] = $laptop['ram_kriteria_bobot']/$minMax['ram_kriteria_bobot'];
         }
       }
+
+      // var_dump($w);die;
+      // var_dump($normalisasi);die;
 
       //menghitung nilai v
       foreach($normalisasi as $key => $normal){
@@ -96,12 +102,13 @@ class Recomendation extends BaseController{
         $nilai_v[$key]['processor'] = $normal['processor']*$w[3];
         $nilai_v[$key]['memori'] = $normal['memori']*$w[4];
       }
-      
+
       //menghitung nilai v total
       foreach($nilai_v as $key => $nilai){
         $nilai_v[$key]['nilai_v'] = $nilai['harga']+$nilai['ram']+$nilai['gpu']
         +$nilai['processor']+$nilai['memori'];
       }
+      
 
       foreach($nilai_v as $key => $nilai){
         $hasil[$key]['laptop_id'] = $nilai['laptop_id'];
@@ -119,7 +126,7 @@ class Recomendation extends BaseController{
       array_multisort($sort['nilai_v'], SORT_DESC, $hasil);
       
       $result['title']='Recomendation Result';
-      $result['hasil']= array_slice($hasil, 0, 5);
+      $result['hasil']= array_slice($hasil, 0, 6);
       return view('users/UserRecomendationResult', $result);
     }
   }

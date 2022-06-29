@@ -7,7 +7,6 @@
 				<i class="fas fa-arrow-left"></i> Kembali
 			</a>
 		</div>
-      <input type="hidden" name='imageLama' value="<?= $laptop['laptop_image'];?>">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-12 col-md-6 col-lg-6">
@@ -39,7 +38,7 @@
 					<div class="col-12 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="">Laptop Photo</label>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group text-center">
                   <img src="/img/<?= $laptop['laptop_image'];?>" class="img-thumbnail img-preview">
 								</div>
